@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="B1910293ModelStoreContainer" CdmEntityContainer="B1910293Entities">
+    <EntitySetMapping Name="chitiethoadons">
+      <EntityTypeMapping TypeName="B1910293Model.chitiethoadon">
+        <MappingFragment StoreEntitySet="chitiethoadon">
+          <ScalarProperty Name="cthd_id" ColumnName="cthd_id" />
+          <ScalarProperty Name="cthd_masp" ColumnName="cthd_masp" />
+          <ScalarProperty Name="cthd_mahd" ColumnName="cthd_mahd" />
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+          <ScalarProperty Name="cthd_giatien" ColumnName="cthd_giatien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hoadons">
+      <EntityTypeMapping TypeName="B1910293Model.hoadon">
+        <MappingFragment StoreEntitySet="hoadon">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_manv" ColumnName="hd_manv" />
+          <ScalarProperty Name="hd_makh" ColumnName="hd_makh" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="khachhangs">
+      <EntityTypeMapping TypeName="B1910293Model.khachhang">
+        <MappingFragment StoreEntitySet="khachhang">
+          <ScalarProperty Name="kh_id" ColumnName="kh_id" />
+          <ScalarProperty Name="kh_username" ColumnName="kh_username" />
+          <ScalarProperty Name="kh_pwd" ColumnName="kh_pwd" />
+          <ScalarProperty Name="kh_hoten" ColumnName="kh_hoten" />
+          <ScalarProperty Name="kh_diachi" ColumnName="kh_diachi" />
+          <ScalarProperty Name="kh_sdt" ColumnName="kh_sdt" />
+          <ScalarProperty Name="kh_anh" ColumnName="kh_anh" />
+          <ScalarProperty Name="kh_loai" ColumnName="kh_loai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loaisanphams">
+      <EntityTypeMapping TypeName="B1910293Model.loaisanpham">
+        <MappingFragment StoreEntitySet="loaisanpham">
+          <ScalarProperty Name="lsp_id" ColumnName="lsp_id" />
+          <ScalarProperty Name="lsp_tenloai" ColumnName="lsp_tenloai" />
+          <ScalarProperty Name="lsp_anhloai" ColumnName="lsp_anhloai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nhanviens">
+      <EntityTypeMapping TypeName="B1910293Model.nhanvien">
+        <MappingFragment StoreEntitySet="nhanvien">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="nv_username" ColumnName="nv_username" />
+          <ScalarProperty Name="nv_pwd" ColumnName="nv_pwd" />
+          <ScalarProperty Name="nv_hoten" ColumnName="nv_hoten" />
+          <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+          <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+          <ScalarProperty Name="nv_anh" ColumnName="nv_anh" />
+          <ScalarProperty Name="nv_chucvu" ColumnName="nv_chucvu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nhasanxuats">
+      <EntityTypeMapping TypeName="B1910293Model.nhasanxuat">
+        <MappingFragment StoreEntitySet="nhasanxuat">
+          <ScalarProperty Name="nsx_id" ColumnName="nsx_id" />
+          <ScalarProperty Name="nsx_tennsx" ColumnName="nsx_tennsx" />
+          <ScalarProperty Name="nsx_diachi" ColumnName="nsx_diachi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sanphams">
+      <EntityTypeMapping TypeName="B1910293Model.sanpham">
+        <MappingFragment StoreEntitySet="sanpham">
+          <ScalarProperty Name="sp_id" ColumnName="sp_id" />
+          <ScalarProperty Name="sp_loai" ColumnName="sp_loai" />
+          <ScalarProperty Name="sp_nsx" ColumnName="sp_nsx" />
+          <ScalarProperty Name="sp_ten" ColumnName="sp_ten" />
+          <ScalarProperty Name="sp_gia" ColumnName="sp_gia" />
+          <ScalarProperty Name="sp_soluong" ColumnName="sp_soluong" />
+          <ScalarProperty Name="sp_mota" ColumnName="sp_mota" />
+          <ScalarProperty Name="sp_anh" ColumnName="sp_anh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="B1910293Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chucvus">
+      <EntityTypeMapping TypeName="B1910293Model.chucvu">
+        <MappingFragment StoreEntitySet="chucvu">
+          <ScalarProperty Name="cv_ten" ColumnName="cv_ten" />
+          <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loaikhachhangs">
+      <EntityTypeMapping TypeName="B1910293Model.loaikhachhang">
+        <MappingFragment StoreEntitySet="loaikhachhang">
+          <ScalarProperty Name="lkh_tenloai" ColumnName="lkh_tenloai" />
+          <ScalarProperty Name="lkh_id" ColumnName="lkh_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chitietdondats">
+      <EntityTypeMapping TypeName="B1910293Model.chitietdondat">
+        <MappingFragment StoreEntitySet="chitietdondat">
+          <ScalarProperty Name="ctdd_giatien" ColumnName="ctdd_giatien" />
+          <ScalarProperty Name="ctdd_soluong" ColumnName="ctdd_soluong" />
+          <ScalarProperty Name="ctdd_masp" ColumnName="ctdd_masp" />
+          <ScalarProperty Name="ctdd_madd" ColumnName="ctdd_madd" />
+          <ScalarProperty Name="ctdd_id" ColumnName="ctdd_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dondats">
+      <EntityTypeMapping TypeName="B1910293Model.dondat">
+        <MappingFragment StoreEntitySet="dondat">
+          <ScalarProperty Name="dd_tongtien" ColumnName="dd_tongtien" />
+          <ScalarProperty Name="dd_thoigian" ColumnName="dd_thoigian" />
+          <ScalarProperty Name="dd_matt" ColumnName="dd_matt" />
+          <ScalarProperty Name="dd_makh" ColumnName="dd_makh" />
+          <ScalarProperty Name="dd_id" ColumnName="dd_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trangthaidondats">
+      <EntityTypeMapping TypeName="B1910293Model.trangthaidondat">
+        <MappingFragment StoreEntitySet="trangthaidondat">
+          <ScalarProperty Name="ttdd_ten" ColumnName="ttdd_ten" />
+          <ScalarProperty Name="ttdd_id" ColumnName="ttdd_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

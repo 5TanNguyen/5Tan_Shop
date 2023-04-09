@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+<body>
+    <style>
+        .nav {
+            position: fixed;
+            width: 250px;
+            height: 100%;
+            left: -250px;
+            background-color: white;
+            //display: flex;
+            align-items: center;
+            border-right: 2px solid red;
+            z-index: 1000;
+            transition: ease-in-out 0.5s;
+        }
+
+            /*nav.hide {
+                width: 0;
+
+            // //nav.classList.toggle('hide');
+            }*/
+
+            .nav.expand {
+                width: 250px;
+                left: 0;
+            }
+
+            .nav ul {
+                position: absolute;
+                //background-color: green;
+                top: 10px;
+                width: 100%;
+                list-style: none;
+                overflow: hidden;
+            }
+
+                .nav ul li a {
+                    width: 100%;
+                    color: black;
+                    font-size: 1em;
+                    text-decoration: none;
+                    display: inline-flex;
+                    padding: 15px;
+                    transition: linear 0.5s;
+                }
+
+                    .nav ul li a ion-icon {
+                        margin: 0 20px;
+                        color: black;
+                        font-size: 1.2em;
+                        transition: linear 0.2s;
+                    }
+
+                    .nav ul li a:hover {
+                        background: red;
+                        color: white;
+                    }
+
+                        .nav ul li a:hover ion-icon {
+                            color: white;
+                        }
+
+        .content {
+            position: absolute;
+            top: 0;
+            left: 250px;
+            width: calc(100% - 250px);
+            min-height: 100vh;
+            padding: 40px;
+            transition: ease-in-out 0.5s;
+        }
+
+            .content h2 {
+                font-size: 4.5em;
+                color: blue;
+                text-transform: uppercase;
+            }
+
+            /*.content.expand {
+                width: 100%;
+                left: 30%;
+            }*/
+
+        .nav .toggle_menu {
+            position: absolute;
+            top: 20px;
+            right: -48px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: cornsilk;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            transition: linear 0.2s
+        }
+
+            .nav .toggle_menu ion-icon {
+                color: red;
+                font-size: 1.5em;
+                transition: linear 0.2s;
+            }
+
+            .nav .toggle_menu:hover {
+                background: red;
+            }
+
+                .nav .toggle_menu:hover ion-icon {
+                    color: white;
+                }
+    </style>
+
+
+
+
+    <nav class="nav">
+        <div class="toggle_menu">
+            <ion-icon name="menu"></ion-icon>
+        </div>
+        <ul>
+            <li>
+                <a href="~/Admin/Manage/List_SanPham">
+                    <ion-icon name="logo-codepen"></ion-icon>
+                    Sản Phẩm
+                </a>
+            </li>
+
+            <li>
+                <a href="~/Admin/Manage/List_NhanVien">
+                    <ion-icon name="person"></ion-icon>
+                    Nhân Viên
+                </a>
+            </li>
+
+            <li>
+                <a href="~/Admin/Manage/List_DonDat">
+                    <ion-icon ios="ios-albums" md="md-albums"></ion-icon>
+                    Đơn Đặt
+                </a>
+            </li>
+
+            <li>
+                <a href="~/Admin/Manage/List_HoaDon">
+                    <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
+                    Hóa Đơn
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    @*<section class="content">
+        <h2>Your content here</h2>
+    </section>*@
+</body>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+<script>
+    const nav = document.querySelector('.nav');
+    const toggle_menu = document.querySelector('.toggle_menu');
+    const content = document.querySelector('.content');
+
+    toggle_menu.onclick = function () {
+        //nav.classList.toggle('hide');
+        nav.classList.toggle('expand');
+
+
+        //content.classList.toggle('expand');
+    }
+</script>
+
+</html>

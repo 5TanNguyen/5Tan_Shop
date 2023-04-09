@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DoAn_555.hoadon>
+
+@{
+    ViewBag.Title = "List_HoaDon";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-center">Danh Sách Hóa Đơn</h2>
+<br />
+
+<table class="table table-striped table-hover">
+    <tr>
+        <td>
+            <b>Mã HĐ</b>
+        </td>
+        <td>
+            <b>Nhân viên lập</b>
+        </td>
+        <td>
+            <b>Khách hàng</b>
+        </td>
+        <td>
+            <b>Ngày lập</b>
+        </td>
+        <td>
+            <b>Sản Phẩm đã mua</b>
+        </td>
+        <td>
+            <b>Tổng tiền</b>
+        </td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.hd_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nhanvien.nv_hoten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.khachhang.kh_hoten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hd_ngaylap)
+        </td>
+        <td>
+            @foreach (var product in item.chitiethoadons)
+            {
+                @Html.DisplayFor(modelItem => product.sanpham.sp_ten) @*<span>( @product.HAISAN.LOAIHAISAN.TENLOAI - </span>*@
+                <span> ( </span>
+                @Html.DisplayFor(modelItem => product.cthd_soluong)
+                <span> ) </span>
+
+                <br />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hd_tongtien) VNĐ
+        </td>
+    </tr>
+}
+
+</table>

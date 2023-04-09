@@ -1,0 +1,120 @@
+﻿@model DoAn_555.nhanvien
+
+@{
+    ViewBag.Title = "Edit_NhanVien";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-center">Chỉnh Sửa Thông tin nhân viên</h2>
+
+@using (Html.BeginForm("Edit_NhanVien", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal bg-light">
+    <style>
+        .form-horizontal .form-group {
+            margin-left: 500px;
+        }
+    </style>
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <b>ID</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nv_id, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nv_id, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Tài khoản</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nv_username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nv_username, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Mật khẩu</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nv_pwd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nv_pwd, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Họ và tên</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nv_hoten, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nv_hoten, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Địa chỉ</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nv_diachi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nv_diachi, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Số điện thoại</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nv_sdt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nv_sdt, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Ảnh</b>
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.nv_anh, new { htmlAttributes = new { @class = "form-control" } })*@
+
+            <img src="@Url.Content("~/Assets/Admin/assets/images/" + @Model.nv_anh)" width="200px" />
+            @*<img src="@Url.Content("~/Assets/Admin/assets/images/" + @Model.nv_anh)" width="200" />*@
+            <br />
+            @Html.ValidationMessageFor(model => model.nv_anh, "", new { @class = "text-danger" })
+            Cập nhật lại ảnh:
+            <input type="file" name="fileUpload" placeholder="Chọn hình ảnh đại diện" />
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Chức vụ</b>
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.nv_chucvu, new { htmlAttributes = new { @class = "form-control" } })*@
+
+            <select name="nv_chucvu" class="form-select" aria-label="Default select example">
+                <option value="@Model.nv_chucvu">@Model.chucvu.cv_ten</option>
+                <option value="1">Giám đốc</option>
+                <option value="2">Quản lí</option>
+                <option value="3">Nhân viên</option>
+            </select>
+
+            @Html.ValidationMessageFor(model => model.nv_chucvu, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-danger" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "List_NhanVien", new { }, new { @class = "btn btn-primary" })
+</div>

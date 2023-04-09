@@ -1,0 +1,128 @@
+﻿
+@*<nav class="navbar navbar-expand-lg navbar-light bg-redd" style="border-bottom: 4px solid #A52A2A; border-left: 5px solid #A52A2A; ">
+    <table class="table_header position-relative top-0">
+        <tr>
+            <th rowspan="2" style="width: 20%">
+                <a href="~/User/Home/Index">
+                    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                        <p class="" style="color:yellow; top: 8px; position: relative">
+                            Xin chào, @if (!string.IsNullOrEmpty(Session["Fullname"] as string))
+                            {
+                                @Session["Fullname"].ToString()
+                            }
+                        </p>
+
+                        <a class="dropdown-item" href="/User/Login/Change_PWD">Đổi mật khẩu</a>
+
+                        <a class="dropdown-item" href="/User/Login/Logout">Đăng xuất</a>
+                    </form>
+                </a>
+            </th>
+            <td style="background-color: #800000; border-start-end-radius: 100px;">
+                <a href="~/User/Home/Index" style="font-weight: bold; color: yellow;">
+                    <ion-icon name=""></ion-icon>
+                    5TAN SHOP
+                </a>
+            </td>
+            <th>
+                <a href="~/User/Product/cartItem" style="color:black">
+                    <ion-icon name=""></ion-icon>
+                    Giỏ hàng
+                </a>
+            </th>
+            <th>
+                <a href="~/User/Product/OrderList" style="color:black">
+                    <ion-icon name=""></ion-icon>
+                    Đơn hàng
+                </a>
+            </th>
+            <th>
+                <a href="~/User/Profile/Index" style="color:black">
+                    <ion-icon name=""></ion-icon>
+                    Cá nhân
+                </a>
+            </th>
+        </tr>
+
+        <tr>
+
+            <th colspan="4">             
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group form-inline">
+                        @Html.TextBox("SearchString", "", new { @class = "form-control", @style = "width: 80%;" })
+
+                        <input type="submit" value="Tìm Kiếm" class="btn btn-success" />
+                    </div>
+                }
+            </th>
+        </tr>
+    </table>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>*@
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+    <div class="container-fluid">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            5Tan Shop
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            @if (!string.IsNullOrEmpty(Session["Fullname"] as string))
+            {
+
+
+                <li><a class="dropdown-item" href="~/User/Profile/Index">@Session["Fullname"].ToString()</a></li>
+                <li><a class="dropdown-item" href="/User/Login/Change_PWD">Đổi mật khẩu</a></li>
+                <li><a class="dropdown-item" href="/User/Login/Logout">Đăng xuất</a></li>
+            }
+            else
+            {
+                <li><a class="dropdown-item" href="~/User/Login/Index">Đăng nhập</a></li>
+                <li><a class="dropdown-item" href="~/User/Register/Register_KhachHang">Đăng kí</a></li>
+            }
+
+
+
+        </ul>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="~/User/Home/Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/User/Product/cartItem">Giỏ Hàng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/User/Product/OrderList">Đơn Hàng</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Thêm
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="~/User/Login/Index">Đăng nhập</a></li>
+                    <li><a class="dropdown-item" href="~/User/Register/Register_KhachHang">Đăng kí</a></li>
+                    <li><a class="dropdown-item" href="~/User/Product/Logout">Đăng xuất</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                </ul>
+            </li>
+
+            </ul>
+            <form class="d-flex">
+                @using (Html.BeginForm())
+                {
+                <input name="SearchString" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+                <input type="submit" value="Tìm Kiếm" class="btn btn-outline-success" />
+                }
+
+            </form>
+        </div>
+    </div>
+</nav>

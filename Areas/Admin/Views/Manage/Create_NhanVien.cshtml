@@ -1,0 +1,112 @@
+﻿@model DoAn_555.nhanvien
+
+@{
+    ViewBag.Title = "Create_NhanVien";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2 class="text-center">Tạo mới nhân viên</h2>
+
+@using (Html.BeginForm("Create_NhanVien", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal bg-light">
+
+        <style>
+            .form-horizontal .form-group {
+                margin-left: 500px;
+            }
+        </style>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <b>ID</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nv_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nv_id, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Tài khoản</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nv_username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nv_username, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Mật khẩu</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nv_pwd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nv_pwd, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Họ và tên</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nv_hoten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nv_hoten, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Địa chỉ</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nv_diachi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nv_diachi, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Số điện thoại</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nv_sdt, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nv_sdt, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Ảnh</b>
+            <div class="col-md-10">
+                <input type="file" class="form-control" id="formFile" name="fileUpload" placeholder="Chọn hình ảnh đại diện" />
+                @Html.ValidationMessageFor(model => model.nv_anh, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Chức vụ</b>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.nv_chucvu, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                <select name="nv_chucvu" class="form-select" aria-label="Default select example">
+                    <option value="1">Giám đốc</option>
+                    <option value="2">Quản lí</option>
+                    <option selected value="3">Nhân viên</option>
+                </select>
+
+                @Html.ValidationMessageFor(model => model.nv_chucvu, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "List_NhanVien", new { }, new { @class= "btn btn-primary" })
+</div>

@@ -1,0 +1,53 @@
+﻿@model DoAn_555.nhanvien
+
+@{
+    ViewBag.Title = "Delete_NhanVien";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2 class="text-center">Xác nhận xóa</h2>
+
+<div>
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+        <th colspan="3">
+            <b>Thông tin Nhân viên</b>
+        </th>
+        </thead>
+        <tr>
+            <th rowspan="3"><img src="@Url.Content("~/Assets/Admin/assets/images/" + Model.nv_anh)" style="width: 300px;" /></th>
+            <th>ID :@Html.DisplayFor(model => model.nv_id)</th>
+        </tr>
+        <tr>
+            <th>Họ và tên: @Html.DisplayFor(model => model.nv_hoten)</th>
+        </tr>
+        <tr>
+            <th colspan="2">Chức vụ : @Html.DisplayFor(model => model.chucvu.cv_ten)</th>
+        </tr>
+        <tr>
+            <th colspan="2">Tài khoản: @Html.DisplayFor(model => model.nv_username) | Mật khẩu: @Html.DisplayFor(model => model.nv_pwd)</th>
+        </tr>
+        <tr>
+            <th colspan="2">Số điện thọai : @Html.DisplayFor(model => model.nv_sdt)</th>
+        </tr>
+        <tr>
+            <th colspan="2">Địa chỉ : @Html.DisplayFor(model => model.nv_diachi)</th>
+        </tr>
+        <tr>
+            <th colspan="2">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                        @Html.ActionLink("Trở về", "List_NhanVien", new { }, new {@class= "btn btn-primary" })
+                    </div>
+                }
+
+            </th>
+        </tr>
+
+    </table>
+</div>

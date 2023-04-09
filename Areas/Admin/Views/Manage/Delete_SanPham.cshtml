@@ -1,0 +1,56 @@
+﻿@model DoAn_555.sanpham
+
+@{
+    ViewBag.Title = "Delete_SanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-center">Xác Nhận Xóa</h2>
+<br />
+
+<div>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <th colspan="3">
+                <b>Thông tin Sản phẩm xóa</b>
+            </th>
+        </thead>
+        <tr>
+            <th rowspan="3"><img src="@Url.Content("~/Assets/Admin/assets/images/" + Model.sp_anh)" style="width: 400px" /></th>
+            <th>ID :@Html.DisplayFor(model => model.sp_id)</th>
+        </tr>
+        <tr>
+            <th>@Html.DisplayFor(model => model.sp_ten)</th>
+        </tr>
+        <tr>
+            <th>Giá : @Html.DisplayFor(model => model.sp_gia) <b>VNĐ</b></th>
+        </tr>
+        <tr>
+            <th colspan="2">Số lượng tồn : @Html.DisplayFor(model => model.sp_soluong)</th>
+        </tr>
+        <tr>
+            <th colspan="2">Loại : @Html.DisplayFor(model => model.loaisanpham.lsp_tenloai)</th>
+        </tr>
+        <tr>
+            <th colspan="2">Nhà sản xuất : @Html.DisplayFor(model => model.nhasanxuat.nsx_tennsx)</th>
+        </tr>
+        <tr>
+            <th colspan="2">Mô tả : @Html.DisplayFor(model => model.sp_mota)</th>
+        </tr>
+        <tr>
+            <th colspan="2">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                        @Html.ActionLink("Trở về", "List_SanPham", new { }, new { @class = "btn btn-primary" })
+                    </div>
+                }
+            </th>
+        </tr>
+
+    </table>
+</div>

@@ -1,0 +1,184 @@
+﻿<style>
+    .headerr {
+        //position:fixed;
+    }
+</style>
+
+@*<nav class="navbar navbar-expand-lg navbar-light bg-redd" style="border-bottom: 4px solid #A52A2A; border-left: 5px solid #A52A2A; ">
+        <div class="container-fluid align-content-center">
+
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <p class="" style="color:yellow; top: 8px; position: relative">
+                    Xin chào, @if (!string.IsNullOrEmpty(Session["staffFullname"] as string))
+                    {
+                        @Session["staffFullname"].ToString()
+                    }
+                </p>
+
+                <a class="dropdown-item" href="/Admin/Login/Logout">Đăng xuất</a>
+            </form>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>*@
+
+<style>
+    .table_header {
+        //background-color: blue;
+        width: 85%;
+        left: 5%;
+        right: 7%;
+    }
+
+    .input {
+        max-height: 100%;
+        height: 38px;
+        max-width: 100%;
+        width: 100%;
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-redd" style="border-bottom: 4px solid #A52A2A; border-left: 5px solid #A52A2A; ">
+    <table class="table_header position-relative top-0">
+        <tr>
+            <th rowspan="2">
+                <a href="~/Admin/Manage/List_SanPham">
+                    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                        <p class="" style="color:yellow; top: 8px; position: relative">
+                            Xin chào, @if (!string.IsNullOrEmpty(Session["staffFullname"] as string))
+                            {
+                                @Session["staffFullname"].ToString()
+                            }
+                        </p>
+
+                        <a class="dropdown-item" href="/User/Login/Change_PWD">Đổi mật khẩu</a>
+
+                        <a class="dropdown-item" href="/Admin/Login/Logout">Đăng xuất</a>
+                    </form>
+                </a>
+            </th>
+            <td style="background-color: #800000; border-start-end-radius: 100px;">
+                <a href="~/Admin/Home/Index" style="font-weight: bold; color: yellow;">
+                    <ion-icon name=""></ion-icon>
+                    5TAN SHOP
+                </a>
+            </td>
+            <th>
+                <a href="~/User/Product/cartItem">
+                    <ion-icon name=""></ion-icon>
+                    Giỏ hàng
+                </a>
+            </th>
+            <th>
+                <a href="~/User/Product/OrderList">
+                    <ion-icon name=""></ion-icon>
+                    Đơn hàng
+                </a>
+            </th>
+            <th>
+                <a href="~/Admin/Manage/List_NhanVien">
+                    <ion-icon name=""></ion-icon>
+                    Cá nhân
+                </a>
+            </th>
+        </tr>
+
+        <tr>
+
+            <th colspan="3">
+
+                <input onkeyup="search(document.getElementById('search').value)" type="text" class="input nav-search-input" placeholder="Tìm kiếm" aria-label="Username" aria-describedby="addon-wrapping" id="search" />
+            </th>
+            <th>
+                <button type="button" style="width: 100%" class="btn btn-success">Search</button>
+            </th>
+        </tr>
+    </table>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    function search(data) {
+        var strData = data;
+        $.ajax({
+            url: './Product/search/',
+            data: { name: strData },
+            method: 'post'
+        }).done(function (data) {
+            $('#menu').html("");
+
+            $(data).each(function (i, e) {
+                var div = $("<div/>"); //tạo div
+                var div2 = $("<div/>"); //tạo div
+                var div3 = $("<div/>"); //tạo div
+                var div4 = $("<div/>"); //tạo div
+                var div5 = $("<div/>"); //tạo div
+
+
+                //Khi áp dụng vào thực tế, nên đặt tên biến cho dễ hiểu hơn
+                var img = $("<img/>");
+                var p = $("<p/>");
+                var p2 = $("<p/>");
+                var p3 = $("<p/>");
+                var p4 = $("<p/>");
+                var i = $("<i/>");
+                var a = $("<a/>");
+                a.addClass("addToCart");
+                a.attr('onclick', "AddToCart('" + e.MHS + "')")
+                i.addClass("pt-8 plus-btn fas fa-plus-circle");
+                i.appendTo(a);//
+                p3.addClass("price");
+                div3.addClass("menu-price-buy");
+                img.attr("src", "/Assets/User/assets/images/" + e.HINHANH);
+                div.addClass("menu-item");
+                img.appendTo(div2);
+                p.html(e.Name + '(' + e.DVT + ')');
+                p.appendTo(div2);
+                div2.addClass("menu-img");
+                div2.appendTo(div);
+
+                p2.html('Loại:' + e.Loai);
+                $(p2).css("float", "left");
+                p3.html(e.Price + '₫');
+
+                p2.appendTo(div4);
+                p3.appendTo(div4);
+
+                p4.html('Số lượng:' + e.SL);
+                p4.addClass('sold');
+                p4.appendTo(div5);
+                a.appendTo(div5);
+
+                div4.appendTo(div3);
+                div5.appendTo(div3);
+
+                div3.appendTo(div2);
+
+                $(div).appendTo('#menu');
+            });
+        })
+    }
+</script>

@@ -1,0 +1,440 @@
+﻿@*@model IEnumerable<DoAn_555.sanpham>*@
+
+@model PagedList.IPagedList<DoAn_555.sanpham>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .image {
+        position: relative;
+        height: 250px;
+        width: 200px;
+        left: 20px;
+        margin-top:  20px;
+        transition: 1s;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+        .image:hover {
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+    .image__img {
+        display: block;
+        height: 150px;
+        width: 200px;
+    }
+
+    .image__overplay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        color: #ffffff;
+        font-family: 'Quicksand', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+
+    .image__overplay--blur {
+        backdrop-filter: blur(5px);
+    }
+
+    .image__overplay--primary {
+        background: red;
+    }
+
+    .image__overplay > * {
+        transform: translateY(20px);
+        transition: transform 0.5s;
+    }
+
+    .image__overplay:hover {
+        opacity: 1;
+        z-index: 1000000;
+    }
+
+        .image__overplay:hover > * {
+            transform: translateY(0);
+        }
+
+    .image__title {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .image__description {
+        font-size: 1.25em;
+        margin-top: 0.25em;
+    }
+
+    .contentt{
+        position: absolute;
+        top: 130px;
+        height: 80px;
+        background-color: white;
+        width: 100%;
+    }
+
+    .gia_sp {
+        position: absolute;
+        top: 50px;
+        left: 5px;  
+        font-size: 15px;
+        font-weight: normal;
+        color: black;
+        z-index: 100;
+    }
+
+    .ten_sp {
+        position: absolute;
+        margin-top: 5px;
+        margin-left: 5px;
+        color: black;
+        z-index: 99;
+    }    
+
+    .buttonn{
+        position:relative;
+        top: 50px;
+        left:5px;
+        height: 40px;
+        width: 120px;
+    }
+
+    .soluongmua{
+        position: relative;
+        top: 10px;
+        height: 40px;
+        left: 140px;
+        width : 50px;
+        border-radius: 5px;
+    }
+
+    /* SLIDE */
+
+    .containerr{
+        position: relative;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, 10%);
+        width: 1000px;
+        height: 600px;
+        background-color: red;
+    }
+
+    #slide{
+        width: max-content;
+        margin-top: 50px;
+    }
+
+    .slide_item{
+        width: 200px;
+        height: 300px;
+        background-position:  50% 50%;
+        display: inline-block;
+        transition: 0.5s;
+        background-size: cover;
+        position:  absolute;
+        z-index: 1;
+        top: 50%;
+        transform: translate(0, -50%);
+        border-radius: 20px;
+        box-shadow: 0 30px 50px #505050;
+    }
+
+    /*.slide_image{
+        width: 200px;
+        height: 300px;
+        border-radius: 20px;
+    }*/
+
+    .slide_item:nth-child(1),
+    .slide_item:nth-child(2){
+        left: 0;
+        top: 0;
+        transform: translate(0,0);
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+        background-color: blue; 
+    }
+
+    .slide_item:nth-child(3){
+        left: 50%;
+    }
+
+    .slide_item:nth-child(4){
+        left: calc(50% + 220px);
+    }
+
+    .slide_item:nth-child(5) {
+        left: calc(50% + 440px);
+    }
+
+    .slide_item:nth-child(n + 6) {
+        left: calc(50% + 660px);
+        opacity: 0;
+    }
+
+    .slide_item .slide_content{
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        width: 300px;
+        text-align: left;
+        pading: 0;
+        color: #eee;
+        transform: translate(0, -50%);
+        display: none;
+    }
+
+    .slide_item:nth-child(2) .slide_content {
+        display: block;
+        z-index: 111111;
+    }
+
+        .slide_item .slide_name {
+            font-family: system-ui;
+            font-size: 40px;
+            font-weight: bold;
+            opacity: 0;
+            animation: showcontent 1s ease-in-out 1 forwards
+        }
+
+        .slide_item .slide_des {
+            font-family: system-ui;
+            font-weight: bold;
+            margin: 20px 0;
+            opacity: 0;
+            animation: showcontent 1s ease-in-out 0.3s 1 forwards
+        }
+
+        .slide_item button {
+            padding: 10px 20px;
+            border: none;
+            opacity: 0;
+            animation: showcontent 1s ease-in-out 0.6s 1 forwards
+        }
+
+    @@-webkit-keyframes showcontent {
+        from {
+            opacity: 0;
+            transform: translate(0, 180px);
+            filter: blur(33px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(0, 0);
+            filter: blur(0);
+        }
+    }
+
+    .buttons {
+        position: absolute;
+        bottom: 30px;
+        z-index: 55555555;
+        text-align: center;
+        width: 100%;
+    }
+
+        .buttons button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: 1px solid #555;
+            transition: 0.5s;
+        }
+
+            .buttons button:hover {
+                background-color: #A52A2A;
+            }
+
+</style>
+
+<br />
+<h2 class="text-center">Danh sách Sản phẩm</h2>
+
+<section class="panel" style="display: flex; justify-content: center; align-items: center;">
+    <div class="panel-body">
+        <div class="pull-right">
+            <!-- Thêm mã phân trang -->
+            <br />
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            <!-- Kết thúc -->
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            @*<div class="card">
+                <img class="card-img-top" src="@Url.Content("~/Assets/Admin/assets/images/" + item.sp_anh)" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.sp_ten</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.sp_gia) VNĐ</p>
+                </div>
+            </div>*@
+
+            <a href="~/User/Home/Detail_SanPham/@item.sp_id">
+                <div class="image card">
+                    <div class="contentt">
+                        <h5 class="ten_sp">@item.sp_ten</h5>
+
+
+                        <p class="gia_sp">@Html.DisplayFor(modelItem => item.sp_gia) VNĐ</p>
+
+                    </div>
+
+                    <img class="image__img card-img-top" src="@Url.Content("~/Assets/Admin/assets/images/" + item.sp_anh)" width="200" />
+
+                    <div class="image__overplay card-body">
+                        <div class="image__title">
+                            <h5 class="card-title">Số lượng tồn</h5>
+                        </div>
+                        <p class="image__description card-text">
+                            @Html.DisplayFor(modelItem => item.sp_soluong)
+                        </p>
+                    </div>
+
+                    <button type="button" class="buttonn btn btn-danger">
+                        <a class="addToCart" onclick="AddToCart('@item.sp_id')">
+                            <i class="pt-8 plus-btn fas fa-plus-circle"></i>
+                            Mua
+                        </a>
+                    </button>
+
+                    <input type="number" class="soluongmua" min="1" max="50" value="1" />
+                </div>
+            </a>
+        </div>
+        }
+    </div>
+</div>
+
+<br />
+<h2 class="accordion-flush border-2 text-center">Các sẩn phẩm bán chạy</h2>
+
+<div class="containerr">
+
+    <div id="slide">
+        <div class="slide_item" style="background-image: url(/Assets/Admin/assets/images/125.jpg);">
+            @*<img class="slide_image" src="@Url.Content("~/Assets/Admin/assets/images/polo nam Elly.jpg")" />*@
+            <div class="slide_content">
+                <div class="slide_name">Áo Thun 12</div>
+                <div class="slide_des">100.000 VNĐ</div>
+                <button>
+                    <a href="/User/Home/Detail_SanPham/5">Xem thêm</a>
+                </button>
+            </div>
+        </div>
+        <div class="slide_item" style="background-image: url('/Assets/Admin/assets/images/hoodie nam.png');">
+            @*<img class="slide_image" src="@Url.Content("~/Assets/Admin/assets/images/hoodie nam.png")" />*@
+            <div class="slide_content">
+                <div class="slide_name">Hoodie Nam</div>
+                <div class="slide_des">400.000 VNĐ</div>
+                <button>
+                    <a href="/User/Home/Detail_SanPham/1">Xem thêm</a>
+                </button>
+            </div>
+        </div>
+        <div class="slide_item" style="background-image: url('/Assets/Admin/assets/images/ao-khoac-long-cuu-cho-cac-nang-mua-dong-vua-am-vua-xinh-61837d.jpg');">
+            @*<img class="slide_image" src="@Url.Content("~/Assets/Admin/assets/images/Khác jean Nam.jpg")" />*@
+            <div class="slide_content">
+                <div class="slide_name">Khoác lông nhun</div>
+                <div class="slide_des">1.500.000 VNĐ</div>
+                <button>
+                    <a href="/User/Home/Detail_SanPham/7">Xem thêm</a>
+                </button>
+            </div>
+        </div>
+        <div class="slide_item" style="background-image: url('/Assets/Admin/assets/images/polo nam Elly.jpg');">
+            @*<img class="slide_image" src="@Url.Content("~/Assets/Admin/assets/images/125.jpg")" />*@
+            <div class="slide_content">
+                <div class="slide_name">Polo Nam Elly</div>
+                <div class="slide_des">150.000 VNĐ</div>
+                <button>
+                    <a href="/User/Home/Detail_SanPham/2">Xem thêm</a>
+                </button>
+            </div>
+        </div>
+
+        <div class="slide_item" style="background-image: url('/Assets/Admin/assets/images/Khác jean Nam.jpg');">
+            @*<img class="slide_image" src="@Url.Content("~/Assets/Admin/assets/images/125.jpg")" />*@
+            <div class="slide_content">
+                <div class="slide_name">Khoác Jean Trang</div>
+                <div class="slide_des">320.000 VNĐ</div>
+                <button>
+                    <a href="/User/Home/Detail_SanPham/4">Xem thêm</a>
+                </button>
+            </div>
+        </div>
+
+        <div class="slide_item" style="background-image: url('/Assets/Admin/assets/images/3be896dd1ddf0653ae986f78d000ceaf.jpg');">
+            @*<img class="slide_image" src="@Url.Content("~/Assets/Admin/assets/images/125.jpg")" />*@
+            <div class="slide_content">
+                <div class="slide_name">Dép Bánh mì đen</div>
+                <div class="slide_des">90.000 VNĐ</div>
+                <button>
+                    <a href="/User/Home/Detail_SanPham/13">Xem thêm</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button id="btn_prev"><</button>
+        <button id="btn_next">></button>
+    </div>
+
+
+</div>
+
+
+<script>
+    // Slide
+
+    document.getElementById('btn_next').onclick = function () {
+        let lists = document.querySelectorAll('.slide_item');
+        document.getElementById('slide').appendChild(lists[0]);
+    }
+
+    document.getElementById('btn_prev').onclick = function () {
+        let lists = document.querySelectorAll('.slide_item');
+        document.getElementById('slide').prepend(lists[lists.length - 1]);
+    }
+
+    // /Slide
+
+
+    document.getElementById('next').onclick = function () {
+
+    }
+
+    function AddToCart(ProductId) {
+        $.ajax({
+            type: 'POST', url: '/User/Product/AddtoCart', data: { id: ProductId }, success: function (data) {
+                $("#Cart_Amount").html(data.ItemAmount);
+            }
+        });
+    }
+</script>

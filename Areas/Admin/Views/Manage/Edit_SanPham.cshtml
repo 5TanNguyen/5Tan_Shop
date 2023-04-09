@@ -1,0 +1,129 @@
+﻿@model DoAn_555.sanpham
+
+@{
+    ViewBag.Title = "Edit_SanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-center">Sửa Thông Tin Sản Phẩm</h2>
+<br />
+
+@using (Html.BeginForm("Edit_SanPham", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <b>ID</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sp_id, new { htmlAttributes = new { @disabled = "disabled", @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.sp_id, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Loại Sản Phẩm</b>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.sp_loai, new { htmlAttributes = new { @class = "form-control" } })*@
+                <select name="sp_loai" class="form-select" aria-label="Default select example">
+                    <option value="@Model.sp_loai" selected>@Model.loaisanpham.lsp_tenloai</option>
+                    <option value="1">Áo Hooide</option>
+                    <option value="2">Áo Thun</option>
+                    <option value="3">Giày</option>
+                    <option value="4">Áo Khoác</option>
+                    <option value="5">Croptop</option>
+                    <option value="6">Dép</option>
+                    <option value="7">Chân váy</option>
+                    <option value="8">Balo</option>
+                    <option value="9">Túi xách</option>
+                    <option value="10">Quần</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.sp_loai, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Nhà sản xuất</b>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.sp_nsx, new { htmlAttributes = new { @class = "form-control" } })*@
+                
+                <select name="sp_nsx" class="form-select" aria-label="Default select example">
+                    <option value="@Model.sp_nsx">@Model.nhasanxuat.nsx_tennsx</option>
+                    <option value="1">TL</option>
+                    <option value="2">5Tan</option>
+                    <option value="3">6Loc</option>
+                    <option value="4">Kha Hy</option>
+                </select>
+
+                @Html.ValidationMessageFor(model => model.sp_nsx, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Tên Sản Phẩm</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sp_ten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sp_ten, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+           <b>Giá</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sp_gia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sp_gia, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Số lượng</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sp_soluong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sp_soluong, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Mô tả</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sp_mota, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sp_mota, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <b>Ảnh</b>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.sp_anh, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                <img src="@Url.Content("~/Assets/Admin/assets/images/" + @Model.sp_anh)" width="200" />
+                <br />
+                @Html.ValidationMessageFor(model => model.sp_anh, "", new { @class = "text-danger" })
+                Cập nhật lại ảnh:
+                <input type="file" name="fileUpload" placeholder="Chọn hình ảnh đại diện" />
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+<div>
+    @Html.ActionLink("Trở về", "List_SanPham",new { }, new { @class = "btn btn-primary" })
+</div>

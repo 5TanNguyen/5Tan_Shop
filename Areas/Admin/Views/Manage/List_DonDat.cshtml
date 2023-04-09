@@ -1,0 +1,101 @@
+﻿@model IEnumerable<DoAn_555.dondat>
+
+@{
+    ViewBag.Title = "List_DonDat";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2 class="text-center">Danh sách Đơn Đặt</h2>
+<br />
+
+<table class="table table-striped table-hover">
+    <tr>
+        <td>
+            <b>Mã đơn</b>
+        </td>
+        <td>
+            <b>Khách hàng</b>
+        </td>
+        <td>
+            <b>SĐT</b>
+        </td>
+        <td>
+            <b>Địa chỉ</b>
+        </td>
+        <td>
+            <b>Sản phẩm</b>
+        </td>
+        <td>
+            <b>Ngày lập</b>
+        </td>
+        <td>
+            <b>Tổng tiền</b>
+        </td>
+        <td>
+            <b>Trạng thái</b>
+        </td>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.dd_id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.khachhang.kh_hoten)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.khachhang.kh_sdt)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.khachhang.kh_diachi)
+    </td>
+
+    <td>
+        @foreach (var product in item.chitietdondats)
+        {
+            @Html.DisplayFor(modelItem => product.sanpham.sp_ten) <span> - </span>
+            @Html.DisplayFor(modelItem => product.ctdd_soluong) <span></span>
+            <br />
+        }
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.dd_thoigian)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.dd_tongtien) đ
+    </td>
+    <td>
+        @*toán tử ba ngôi*@
+        <select @(item.dd_matt == 3 ? "disabled" : null) onchange="updateState(this.value, @item.dd_id)">
+            <option value="1" id="1" @(item.dd_matt == 1 ? "selected" : null)>Chờ xác nhận</option>
+            <option value="2" id="2" @(item.dd_matt == 2 ? "selected" : null)>Đang vận chuyển</option>
+            <option value="3" id="3" @(item.dd_matt == 3 ? "selected" : null)>Giao thành công</option>
+            <option value="4" id="4" @(item.dd_matt == 4 ? "selected" : null)>Đã hủy</option>
+
+
+
+        </select>
+    </td>
+</tr>
+}
+
+</table>
+
+<script>
+    function updateState(idState, idOrder) {
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/Manage/updateStateOrder',
+            data: {
+                id_state: idState,
+                id_order: idOrder
+            },
+            success: function (data) {
+
+            }
+        });
+    }
+</script>

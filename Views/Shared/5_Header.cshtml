@@ -1,0 +1,32 @@
+﻿<style>
+    .headerr{
+        //position:fixed;
+    }
+</style>
+
+    <div class="headerr navbar navbar-expand-lg bg-redd" style="border-bottom: 5px solid #8B0000;">
+        @*style="position: relative;"*@
+        <ul class="navbar-nav">
+            <li class="nav-item col-3"></li>
+            <li class="nav-item col-4">
+                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                    <p class="" style="color:yellow; top: 8px; position: relative">
+                        Xin chào, @if (!string.IsNullOrEmpty(Session["staffFullname"] as string))
+                        {
+                            @Session["staffFullname"].ToString()
+                        }
+                    </p>
+
+                    <a class="dropdown-item" href="/Admin/Login/Logout">Đăng xuất</a>
+
+
+                </form>
+            </li>
+            <li class="nav-item col-4">____________</li>
+            <li class="nav-item">@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+            <li class="nav-item col-4">@Html.ActionLink("Home", "Index", "Home", new { @style = "text-decoration: none; color: black;" })</li>
+            <li class="nav-item col-4">@Html.ActionLink("About", "About", "Home", new { @style = "text-decoration: none; color: black;" })</li>
+            <li class="nav-item col-4">@Html.ActionLink("Contact", "Contact", "Home", new { @style = "text-decoration: none; color: black;" })</li>
+        </ul>
+    </div>

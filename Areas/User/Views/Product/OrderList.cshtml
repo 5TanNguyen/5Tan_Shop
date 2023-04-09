@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DoAn_555.dondat>
+
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2 class="text-center">Danh sách Đơn hàng</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            ID
+        </th>
+        <th>
+            Mã Khách hàng
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Thời gian đặt
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th></th>
+    </tr>
+@{ int stt = 0;}
+@foreach (var item in Model) {
+    stt++;
+    <tr>
+        <td>
+            @stt
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dd_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dd_makh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trangthaidondat.ttdd_ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dd_thoigian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dd_tongtien) VNĐ
+        </td>
+        <td>
+            <a class="orderdetails" href="/User/Product/OrderDetail/@item.dd_id">Chi tiết</a>
+        </td>
+    </tr>
+}
+
+</table>

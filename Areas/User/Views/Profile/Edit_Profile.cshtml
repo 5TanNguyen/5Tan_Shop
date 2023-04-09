@@ -1,0 +1,110 @@
+﻿@model DoAn_555.khachhang
+
+@{
+    ViewBag.Title = "Edit_Profile";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-center">Chỉnh sửa trang cá nhân</h2>
+
+@using (Html.BeginForm("Edit_Profile", "Profile", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <style>
+        .form-horizontal .form-group {
+            margin-left: 20%;
+        }
+    </style>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <b>ID</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kh_id, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.kh_id, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Tài khoản</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kh_username, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.kh_username, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Mật khẩu</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kh_pwd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.kh_pwd, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Họ và tên</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kh_hoten, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.kh_hoten, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Địa chỉ</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kh_diachi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.kh_diachi, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Số điện thoại</b>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kh_sdt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.kh_sdt, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        <b>Ảnh</b>
+        <div class="col-md-10">
+            <img src="@Url.Content("~/Assets/User/assets/images/" + @Model.kh_anh)" width="200px" />
+
+            <br />
+            <b>Cập nhật ảnh</b>
+            <br />
+            <input type="file" name="fileUpload" placeholder="Chọn hình ảnh đại diện" />
+            @Html.ValidationMessageFor(model => model.kh_anh, "", new { @class = "text-danger" })
+        </div>
+        <br />
+    </div>
+
+    <div class="form-group">
+        @*<b>Loại khách hàng</b>*@
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.kh_loai, new { htmlAttributes = new { @class = "form-control" } })*@
+
+            <input type="number" hidden name="kh_loai" value="@Model.kh_loai" readonly class="form-select" aria-label="Default select example" />
+
+            @Html.ValidationMessageFor(model => model.kh_loai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-danger" />
+            @Html.ActionLink("Trở về", "Index", new { }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+}
+
+

@@ -1,0 +1,870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="B1910293Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="chitietdondat">
+          <Key>
+            <PropertyRef Name="ctdd_id" />
+          </Key>
+          <Property Name="ctdd_id" Type="int" Nullable="false" />
+          <Property Name="ctdd_madd" Type="int" Nullable="false" />
+          <Property Name="ctdd_masp" Type="int" Nullable="false" />
+          <Property Name="ctdd_soluong" Type="int" Nullable="false" />
+          <Property Name="ctdd_giatien" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chitiethoadon">
+          <Key>
+            <PropertyRef Name="cthd_id" />
+          </Key>
+          <Property Name="cthd_id" Type="int" Nullable="false" />
+          <Property Name="cthd_masp" Type="int" Nullable="false" />
+          <Property Name="cthd_mahd" Type="int" Nullable="false" />
+          <Property Name="cthd_soluong" Type="int" Nullable="false" />
+          <Property Name="cthd_giatien" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chucvu">
+          <Key>
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="cv_id" Type="int" Nullable="false" />
+          <Property Name="cv_ten" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dondat">
+          <Key>
+            <PropertyRef Name="dd_id" />
+          </Key>
+          <Property Name="dd_id" Type="int" Nullable="false" />
+          <Property Name="dd_makh" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dd_matt" Type="int" Nullable="false" />
+          <Property Name="dd_thoigian" Type="date" />
+          <Property Name="dd_tongtien" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hoadon">
+          <Key>
+            <PropertyRef Name="hd_id" />
+          </Key>
+          <Property Name="hd_id" Type="int" Nullable="false" />
+          <Property Name="hd_manv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="hd_makh" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="date" Nullable="false" />
+          <Property Name="hd_tongtien" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="kh_id" />
+          </Key>
+          <Property Name="kh_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kh_username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kh_pwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kh_hoten" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="kh_diachi" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="kh_sdt" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="kh_anh" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="kh_loai" Type="int" />
+        </EntityType>
+        <EntityType Name="loaikhachhang">
+          <Key>
+            <PropertyRef Name="lkh_id" />
+          </Key>
+          <Property Name="lkh_id" Type="int" Nullable="false" />
+          <Property Name="lkh_tenloai" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loaisanpham">
+          <Key>
+            <PropertyRef Name="lsp_id" />
+          </Key>
+          <Property Name="lsp_id" Type="int" Nullable="false" />
+          <Property Name="lsp_tenloai" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="lsp_anhloai" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nhanvien">
+          <Key>
+            <PropertyRef Name="nv_id" />
+          </Key>
+          <Property Name="nv_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nv_username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nv_pwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nv_hoten" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nv_diachi" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="nv_sdt" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="nv_anh" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nv_chucvu" Type="int" />
+        </EntityType>
+        <EntityType Name="nhasanxuat">
+          <Key>
+            <PropertyRef Name="nsx_id" />
+          </Key>
+          <Property Name="nsx_id" Type="int" Nullable="false" />
+          <Property Name="nsx_tennsx" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nsx_diachi" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sanpham">
+          <Key>
+            <PropertyRef Name="sp_id" />
+          </Key>
+          <Property Name="sp_id" Type="int" Nullable="false" />
+          <Property Name="sp_loai" Type="int" Nullable="false" />
+          <Property Name="sp_nsx" Type="int" Nullable="false" />
+          <Property Name="sp_ten" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="sp_gia" Type="float" Nullable="false" />
+          <Property Name="sp_soluong" Type="int" Nullable="false" />
+          <Property Name="sp_mota" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="sp_anh" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="trangthaidondat">
+          <Key>
+            <PropertyRef Name="ttdd_id" />
+          </Key>
+          <Property Name="ttdd_id" Type="int" Nullable="false" />
+          <Property Name="ttdd_ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__chitietdo__ctdd___46B27FE2">
+          <End Role="dondat" Type="Self.dondat" Multiplicity="1" />
+          <End Role="chitietdondat" Type="Self.chitietdondat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dondat">
+              <PropertyRef Name="dd_id" />
+            </Principal>
+            <Dependent Role="chitietdondat">
+              <PropertyRef Name="ctdd_madd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chitietdo__ctdd___47A6A41B">
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+          <End Role="chitietdondat" Type="Self.chitietdondat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sanpham">
+              <PropertyRef Name="sp_id" />
+            </Principal>
+            <Dependent Role="chitietdondat">
+              <PropertyRef Name="ctdd_masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chitietho__cthd___18EBB532">
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+          <End Role="chitiethoadon" Type="Self.chitiethoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sanpham">
+              <PropertyRef Name="sp_id" />
+            </Principal>
+            <Dependent Role="chitiethoadon">
+              <PropertyRef Name="cthd_masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chitietho__cthd___19DFD96B">
+          <End Role="hoadon" Type="Self.hoadon" Multiplicity="1" />
+          <End Role="chitiethoadon" Type="Self.chitiethoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hoadon">
+              <PropertyRef Name="hd_id" />
+            </Principal>
+            <Dependent Role="chitiethoadon">
+              <PropertyRef Name="cthd_mahd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dondat__dd_makh__42E1EEFE">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+          <End Role="dondat" Type="Self.dondat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="kh_id" />
+            </Principal>
+            <Dependent Role="dondat">
+              <PropertyRef Name="dd_makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dondat__dd_matt__43D61337">
+          <End Role="trangthaidondat" Type="Self.trangthaidondat" Multiplicity="1" />
+          <End Role="dondat" Type="Self.dondat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trangthaidondat">
+              <PropertyRef Name="ttdd_id" />
+            </Principal>
+            <Dependent Role="dondat">
+              <PropertyRef Name="dd_matt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hoadon__hd_makh__160F4887">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+          <End Role="hoadon" Type="Self.hoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="kh_id" />
+            </Principal>
+            <Dependent Role="hoadon">
+              <PropertyRef Name="hd_makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hoadon__hd_manv__151B244E">
+          <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="1" />
+          <End Role="hoadon" Type="Self.hoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nhanvien">
+              <PropertyRef Name="nv_id" />
+            </Principal>
+            <Dependent Role="hoadon">
+              <PropertyRef Name="hd_manv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__khachhang__kh_lo__37703C52">
+          <End Role="loaikhachhang" Type="Self.loaikhachhang" Multiplicity="0..1" />
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaikhachhang">
+              <PropertyRef Name="lkh_id" />
+            </Principal>
+            <Dependent Role="khachhang">
+              <PropertyRef Name="kh_loai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__nhanvien__nv_chu__3493CFA7">
+          <End Role="chucvu" Type="Self.chucvu" Multiplicity="0..1" />
+          <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chucvu">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="nhanvien">
+              <PropertyRef Name="nv_chucvu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanpham__sp_loai__08B54D69">
+          <End Role="loaisanpham" Type="Self.loaisanpham" Multiplicity="1" />
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaisanpham">
+              <PropertyRef Name="lsp_id" />
+            </Principal>
+            <Dependent Role="sanpham">
+              <PropertyRef Name="sp_loai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanpham__sp_nsx__09A971A2">
+          <End Role="nhasanxuat" Type="Self.nhasanxuat" Multiplicity="1" />
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nhasanxuat">
+              <PropertyRef Name="nsx_id" />
+            </Principal>
+            <Dependent Role="sanpham">
+              <PropertyRef Name="sp_nsx" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="B1910293ModelStoreContainer">
+          <EntitySet Name="chitietdondat" EntityType="Self.chitietdondat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chitiethoadon" EntityType="Self.chitiethoadon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chucvu" EntityType="Self.chucvu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dondat" EntityType="Self.dondat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hoadon" EntityType="Self.hoadon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khachhang" EntityType="Self.khachhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaikhachhang" EntityType="Self.loaikhachhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaisanpham" EntityType="Self.loaisanpham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nhanvien" EntityType="Self.nhanvien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nhasanxuat" EntityType="Self.nhasanxuat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trangthaidondat" EntityType="Self.trangthaidondat" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__chitietdo__ctdd___46B27FE2" Association="Self.FK__chitietdo__ctdd___46B27FE2">
+            <End Role="dondat" EntitySet="dondat" />
+            <End Role="chitietdondat" EntitySet="chitietdondat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chitietdo__ctdd___47A6A41B" Association="Self.FK__chitietdo__ctdd___47A6A41B">
+            <End Role="sanpham" EntitySet="sanpham" />
+            <End Role="chitietdondat" EntitySet="chitietdondat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chitietho__cthd___18EBB532" Association="Self.FK__chitietho__cthd___18EBB532">
+            <End Role="sanpham" EntitySet="sanpham" />
+            <End Role="chitiethoadon" EntitySet="chitiethoadon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chitietho__cthd___19DFD96B" Association="Self.FK__chitietho__cthd___19DFD96B">
+            <End Role="hoadon" EntitySet="hoadon" />
+            <End Role="chitiethoadon" EntitySet="chitiethoadon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dondat__dd_makh__42E1EEFE" Association="Self.FK__dondat__dd_makh__42E1EEFE">
+            <End Role="khachhang" EntitySet="khachhang" />
+            <End Role="dondat" EntitySet="dondat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dondat__dd_matt__43D61337" Association="Self.FK__dondat__dd_matt__43D61337">
+            <End Role="trangthaidondat" EntitySet="trangthaidondat" />
+            <End Role="dondat" EntitySet="dondat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hoadon__hd_makh__160F4887" Association="Self.FK__hoadon__hd_makh__160F4887">
+            <End Role="khachhang" EntitySet="khachhang" />
+            <End Role="hoadon" EntitySet="hoadon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hoadon__hd_manv__151B244E" Association="Self.FK__hoadon__hd_manv__151B244E">
+            <End Role="nhanvien" EntitySet="nhanvien" />
+            <End Role="hoadon" EntitySet="hoadon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__khachhang__kh_lo__37703C52" Association="Self.FK__khachhang__kh_lo__37703C52">
+            <End Role="loaikhachhang" EntitySet="loaikhachhang" />
+            <End Role="khachhang" EntitySet="khachhang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__nhanvien__nv_chu__3493CFA7" Association="Self.FK__nhanvien__nv_chu__3493CFA7">
+            <End Role="chucvu" EntitySet="chucvu" />
+            <End Role="nhanvien" EntitySet="nhanvien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanpham__sp_loai__08B54D69" Association="Self.FK__sanpham__sp_loai__08B54D69">
+            <End Role="loaisanpham" EntitySet="loaisanpham" />
+            <End Role="sanpham" EntitySet="sanpham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanpham__sp_nsx__09A971A2" Association="Self.FK__sanpham__sp_nsx__09A971A2">
+            <End Role="nhasanxuat" EntitySet="nhasanxuat" />
+            <End Role="sanpham" EntitySet="sanpham" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="B1910293Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="chitiethoadon">
+          <Key>
+            <PropertyRef Name="cthd_id" />
+          </Key>
+          <Property Name="cthd_id" Type="Int32" Nullable="false" />
+          <Property Name="cthd_masp" Type="Int32" Nullable="false" />
+          <Property Name="cthd_mahd" Type="Int32" Nullable="false" />
+          <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+          <Property Name="cthd_giatien" Type="Double" Nullable="false" />
+          <NavigationProperty Name="sanpham" Relationship="Self.FK__chitietho__cthd___18EBB532" FromRole="chitiethoadon" ToRole="sanpham" />
+          <NavigationProperty Name="hoadon" Relationship="Self.FK__chitietho__cthd___19DFD96B" FromRole="chitiethoadon" ToRole="hoadon" />
+        </EntityType>
+        <EntityType Name="hoadon">
+          <Key>
+            <PropertyRef Name="hd_id" />
+          </Key>
+          <Property Name="hd_id" Type="Int32" Nullable="false" />
+          <Property Name="hd_manv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hd_makh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="hd_tongtien" Type="Double" Nullable="false" />
+          <NavigationProperty Name="chitiethoadons" Relationship="Self.FK__chitietho__cthd___19DFD96B" FromRole="hoadon" ToRole="chitiethoadon" />
+          <NavigationProperty Name="khachhang" Relationship="Self.FK__hoadon__hd_makh__160F4887" FromRole="hoadon" ToRole="khachhang" />
+          <NavigationProperty Name="nhanvien" Relationship="Self.FK__hoadon__hd_manv__151B244E" FromRole="hoadon" ToRole="nhanvien" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="kh_id" />
+          </Key>
+          <Property Name="kh_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kh_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kh_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kh_hoten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kh_diachi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kh_sdt" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="kh_anh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kh_loai" Type="Int32" />
+          <NavigationProperty Name="hoadons" Relationship="Self.FK__hoadon__hd_makh__160F4887" FromRole="khachhang" ToRole="hoadon" />
+          <NavigationProperty Name="loaikhachhang1" Relationship="B1910293Model.FK__khachhang__kh_lo__3864608B" FromRole="khachhang" ToRole="loaikhachhang" />
+          <NavigationProperty Name="dondats" Relationship="B1910293Model.FK__dondat__dd_makh__42E1EEFE" FromRole="khachhang" ToRole="dondat" />
+        </EntityType>
+        <EntityType Name="loaisanpham">
+          <Key>
+            <PropertyRef Name="lsp_id" />
+          </Key>
+          <Property Name="lsp_id" Type="Int32" Nullable="false" />
+          <Property Name="lsp_tenloai" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lsp_anhloai" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__sp_loai__08B54D69" FromRole="loaisanpham" ToRole="sanpham" />
+        </EntityType>
+        <EntityType Name="nhanvien">
+          <Key>
+            <PropertyRef Name="nv_id" />
+          </Key>
+          <Property Name="nv_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_hoten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_diachi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_sdt" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="nv_anh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_chucvu" Type="Int32" />
+          <NavigationProperty Name="hoadons" Relationship="Self.FK__hoadon__hd_manv__151B244E" FromRole="nhanvien" ToRole="hoadon" />
+          <NavigationProperty Name="chucvu" Relationship="B1910293Model.FK__nhanvien__nv_chu__3493CFA7" FromRole="nhanvien" ToRole="chucvu" />
+        </EntityType>
+        <EntityType Name="nhasanxuat">
+          <Key>
+            <PropertyRef Name="nsx_id" />
+          </Key>
+          <Property Name="nsx_id" Type="Int32" Nullable="false" />
+          <Property Name="nsx_tennsx" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nsx_diachi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__sp_nsx__09A971A2" FromRole="nhasanxuat" ToRole="sanpham" />
+        </EntityType>
+        <EntityType Name="sanpham">
+          <Key>
+            <PropertyRef Name="sp_id" />
+          </Key>
+          <Property Name="sp_id" Type="Int32" Nullable="false" />
+          <Property Name="sp_loai" Type="Int32" Nullable="false" />
+          <Property Name="sp_nsx" Type="Int32" Nullable="false" />
+          <Property Name="sp_ten" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sp_gia" Type="Double" Nullable="false" />
+          <Property Name="sp_soluong" Type="Int32" Nullable="false" />
+          <Property Name="sp_mota" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sp_anh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="chitiethoadons" Relationship="Self.FK__chitietho__cthd___18EBB532" FromRole="sanpham" ToRole="chitiethoadon" />
+          <NavigationProperty Name="loaisanpham" Relationship="Self.FK__sanpham__sp_loai__08B54D69" FromRole="sanpham" ToRole="loaisanpham" />
+          <NavigationProperty Name="nhasanxuat" Relationship="Self.FK__sanpham__sp_nsx__09A971A2" FromRole="sanpham" ToRole="nhasanxuat" />
+          <NavigationProperty Name="chitietdondats" Relationship="B1910293Model.FK__chitietdo__ctdd___47A6A41B" FromRole="sanpham" ToRole="chitietdondat" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__chitietho__cthd___18EBB532">
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+          <End Role="chitiethoadon" Type="Self.chitiethoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sanpham">
+              <PropertyRef Name="sp_id" />
+            </Principal>
+            <Dependent Role="chitiethoadon">
+              <PropertyRef Name="cthd_masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chitietho__cthd___19DFD96B">
+          <End Role="hoadon" Type="Self.hoadon" Multiplicity="1" />
+          <End Role="chitiethoadon" Type="Self.chitiethoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hoadon">
+              <PropertyRef Name="hd_id" />
+            </Principal>
+            <Dependent Role="chitiethoadon">
+              <PropertyRef Name="cthd_mahd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hoadon__hd_makh__160F4887">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+          <End Role="hoadon" Type="Self.hoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="kh_id" />
+            </Principal>
+            <Dependent Role="hoadon">
+              <PropertyRef Name="hd_makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hoadon__hd_manv__151B244E">
+          <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="1" />
+          <End Role="hoadon" Type="Self.hoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nhanvien">
+              <PropertyRef Name="nv_id" />
+            </Principal>
+            <Dependent Role="hoadon">
+              <PropertyRef Name="hd_manv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanpham__sp_loai__08B54D69">
+          <End Role="loaisanpham" Type="Self.loaisanpham" Multiplicity="1" />
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaisanpham">
+              <PropertyRef Name="lsp_id" />
+            </Principal>
+            <Dependent Role="sanpham">
+              <PropertyRef Name="sp_loai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sanpham__sp_nsx__09A971A2">
+          <End Role="nhasanxuat" Type="Self.nhasanxuat" Multiplicity="1" />
+          <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nhasanxuat">
+              <PropertyRef Name="nsx_id" />
+            </Principal>
+            <Dependent Role="sanpham">
+              <PropertyRef Name="sp_nsx" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="B1910293Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="chitiethoadons" EntityType="Self.chitiethoadon" />
+          <EntitySet Name="hoadons" EntityType="Self.hoadon" />
+          <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
+          <EntitySet Name="loaisanphams" EntityType="Self.loaisanpham" />
+          <EntitySet Name="nhanviens" EntityType="Self.nhanvien" />
+          <EntitySet Name="nhasanxuats" EntityType="Self.nhasanxuat" />
+          <EntitySet Name="sanphams" EntityType="Self.sanpham" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__chitietho__cthd___18EBB532" Association="Self.FK__chitietho__cthd___18EBB532">
+            <End Role="sanpham" EntitySet="sanphams" />
+            <End Role="chitiethoadon" EntitySet="chitiethoadons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chitietho__cthd___19DFD96B" Association="Self.FK__chitietho__cthd___19DFD96B">
+            <End Role="hoadon" EntitySet="hoadons" />
+            <End Role="chitiethoadon" EntitySet="chitiethoadons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hoadon__hd_makh__160F4887" Association="Self.FK__hoadon__hd_makh__160F4887">
+            <End Role="khachhang" EntitySet="khachhangs" />
+            <End Role="hoadon" EntitySet="hoadons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hoadon__hd_manv__151B244E" Association="Self.FK__hoadon__hd_manv__151B244E">
+            <End Role="nhanvien" EntitySet="nhanviens" />
+            <End Role="hoadon" EntitySet="hoadons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanpham__sp_loai__08B54D69" Association="Self.FK__sanpham__sp_loai__08B54D69">
+            <End Role="loaisanpham" EntitySet="loaisanphams" />
+            <End Role="sanpham" EntitySet="sanphams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sanpham__sp_nsx__09A971A2" Association="Self.FK__sanpham__sp_nsx__09A971A2">
+            <End Role="nhasanxuat" EntitySet="nhasanxuats" />
+            <End Role="sanpham" EntitySet="sanphams" />
+          </AssociationSet>
+          <EntitySet Name="chucvus" EntityType="B1910293Model.chucvu" />
+          <EntitySet Name="loaikhachhangs" EntityType="B1910293Model.loaikhachhang" />
+          <AssociationSet Name="FK__nhanvien__nv_chu__3493CFA7" Association="B1910293Model.FK__nhanvien__nv_chu__3493CFA7">
+            <End Role="chucvu" EntitySet="chucvus" />
+            <End Role="nhanvien" EntitySet="nhanviens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__khachhang__kh_lo__3864608B" Association="B1910293Model.FK__khachhang__kh_lo__3864608B">
+            <End Role="loaikhachhang" EntitySet="loaikhachhangs" />
+            <End Role="khachhang" EntitySet="khachhangs" />
+          </AssociationSet>
+          <EntitySet Name="chitietdondats" EntityType="B1910293Model.chitietdondat" />
+          <EntitySet Name="dondats" EntityType="B1910293Model.dondat" />
+          <EntitySet Name="trangthaidondats" EntityType="B1910293Model.trangthaidondat" />
+          <AssociationSet Name="FK__chitietdo__ctdd___46B27FE2" Association="B1910293Model.FK__chitietdo__ctdd___46B27FE2">
+            <End Role="dondat" EntitySet="dondats" />
+            <End Role="chitietdondat" EntitySet="chitietdondats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chitietdo__ctdd___47A6A41B" Association="B1910293Model.FK__chitietdo__ctdd___47A6A41B">
+            <End Role="sanpham" EntitySet="sanphams" />
+            <End Role="chitietdondat" EntitySet="chitietdondats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dondat__dd_makh__42E1EEFE" Association="B1910293Model.FK__dondat__dd_makh__42E1EEFE">
+            <End Role="khachhang" EntitySet="khachhangs" />
+            <End Role="dondat" EntitySet="dondats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dondat__dd_matt__43D61337" Association="B1910293Model.FK__dondat__dd_matt__43D61337">
+            <End Role="trangthaidondat" EntitySet="trangthaidondats" />
+            <End Role="dondat" EntitySet="dondats" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="chucvu">
+          <Key>
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="cv_id" Type="Int32" Nullable="false" />
+          <Property Name="cv_ten" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="nhanviens" Relationship="B1910293Model.FK__nhanvien__nv_chu__3493CFA7" FromRole="chucvu" ToRole="nhanvien" />
+        </EntityType>
+        <EntityType Name="loaikhachhang">
+          <Key>
+            <PropertyRef Name="lkh_id" />
+          </Key>
+          <Property Name="lkh_id" Type="Int32" Nullable="false" />
+          <Property Name="lkh_tenloai" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="khachhangs1" Relationship="B1910293Model.FK__khachhang__kh_lo__3864608B" FromRole="loaikhachhang" ToRole="khachhang" />
+        </EntityType>
+        <Association Name="FK__nhanvien__nv_chu__3493CFA7">
+          <End Type="B1910293Model.chucvu" Role="chucvu" Multiplicity="0..1" />
+          <End Type="B1910293Model.nhanvien" Role="nhanvien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chucvu">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="nhanvien">
+              <PropertyRef Name="nv_chucvu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__khachhang__kh_lo__3864608B">
+          <End Type="B1910293Model.loaikhachhang" Role="loaikhachhang" Multiplicity="0..1" />
+          <End Type="B1910293Model.khachhang" Role="khachhang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaikhachhang">
+              <PropertyRef Name="lkh_id" />
+            </Principal>
+            <Dependent Role="khachhang">
+              <PropertyRef Name="kh_loai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="chitietdondat">
+          <Key>
+            <PropertyRef Name="ctdd_id" />
+          </Key>
+          <Property Name="ctdd_id" Type="Int32" Nullable="false" />
+          <Property Name="ctdd_madd" Type="Int32" Nullable="false" />
+          <Property Name="ctdd_masp" Type="Int32" Nullable="false" />
+          <Property Name="ctdd_soluong" Type="Int32" Nullable="false" />
+          <Property Name="ctdd_giatien" Type="Double" Nullable="false" />
+          <NavigationProperty Name="dondat" Relationship="B1910293Model.FK__chitietdo__ctdd___46B27FE2" FromRole="chitietdondat" ToRole="dondat" />
+          <NavigationProperty Name="sanpham" Relationship="B1910293Model.FK__chitietdo__ctdd___47A6A41B" FromRole="chitietdondat" ToRole="sanpham" />
+        </EntityType>
+        <EntityType Name="dondat">
+          <Key>
+            <PropertyRef Name="dd_id" />
+          </Key>
+          <Property Name="dd_id" Type="Int32" Nullable="false" />
+          <Property Name="dd_makh" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dd_matt" Type="Int32" Nullable="false" />
+          <Property Name="dd_thoigian" Type="DateTime" Precision="0" />
+          <Property Name="dd_tongtien" Type="Double" Nullable="false" />
+          <NavigationProperty Name="chitietdondats" Relationship="B1910293Model.FK__chitietdo__ctdd___46B27FE2" FromRole="dondat" ToRole="chitietdondat" />
+          <NavigationProperty Name="khachhang" Relationship="B1910293Model.FK__dondat__dd_makh__42E1EEFE" FromRole="dondat" ToRole="khachhang" />
+          <NavigationProperty Name="trangthaidondat" Relationship="B1910293Model.FK__dondat__dd_matt__43D61337" FromRole="dondat" ToRole="trangthaidondat" />
+        </EntityType>
+        <EntityType Name="trangthaidondat">
+          <Key>
+            <PropertyRef Name="ttdd_id" />
+          </Key>
+          <Property Name="ttdd_id" Type="Int32" Nullable="false" />
+          <Property Name="ttdd_ten" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dondats" Relationship="B1910293Model.FK__dondat__dd_matt__43D61337" FromRole="trangthaidondat" ToRole="dondat" />
+        </EntityType>
+        <Association Name="FK__chitietdo__ctdd___46B27FE2">
+          <End Type="B1910293Model.dondat" Role="dondat" Multiplicity="1" />
+          <End Type="B1910293Model.chitietdondat" Role="chitietdondat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dondat">
+              <PropertyRef Name="dd_id" />
+            </Principal>
+            <Dependent Role="chitietdondat">
+              <PropertyRef Name="ctdd_madd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chitietdo__ctdd___47A6A41B">
+          <End Type="B1910293Model.sanpham" Role="sanpham" Multiplicity="1" />
+          <End Type="B1910293Model.chitietdondat" Role="chitietdondat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sanpham">
+              <PropertyRef Name="sp_id" />
+            </Principal>
+            <Dependent Role="chitietdondat">
+              <PropertyRef Name="ctdd_masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dondat__dd_makh__42E1EEFE">
+          <End Type="B1910293Model.khachhang" Role="khachhang" Multiplicity="1" />
+          <End Type="B1910293Model.dondat" Role="dondat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="kh_id" />
+            </Principal>
+            <Dependent Role="dondat">
+              <PropertyRef Name="dd_makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dondat__dd_matt__43D61337">
+          <End Type="B1910293Model.trangthaidondat" Role="trangthaidondat" Multiplicity="1" />
+          <End Type="B1910293Model.dondat" Role="dondat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trangthaidondat">
+              <PropertyRef Name="ttdd_id" />
+            </Principal>
+            <Dependent Role="dondat">
+              <PropertyRef Name="dd_matt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="B1910293ModelStoreContainer" CdmEntityContainer="B1910293Entities">
+          <EntitySetMapping Name="chitiethoadons">
+            <EntityTypeMapping TypeName="B1910293Model.chitiethoadon">
+              <MappingFragment StoreEntitySet="chitiethoadon">
+                <ScalarProperty Name="cthd_id" ColumnName="cthd_id" />
+                <ScalarProperty Name="cthd_masp" ColumnName="cthd_masp" />
+                <ScalarProperty Name="cthd_mahd" ColumnName="cthd_mahd" />
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="cthd_giatien" ColumnName="cthd_giatien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hoadons">
+            <EntityTypeMapping TypeName="B1910293Model.hoadon">
+              <MappingFragment StoreEntitySet="hoadon">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_manv" ColumnName="hd_manv" />
+                <ScalarProperty Name="hd_makh" ColumnName="hd_makh" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khachhangs">
+            <EntityTypeMapping TypeName="B1910293Model.khachhang">
+              <MappingFragment StoreEntitySet="khachhang">
+                <ScalarProperty Name="kh_id" ColumnName="kh_id" />
+                <ScalarProperty Name="kh_username" ColumnName="kh_username" />
+                <ScalarProperty Name="kh_pwd" ColumnName="kh_pwd" />
+                <ScalarProperty Name="kh_hoten" ColumnName="kh_hoten" />
+                <ScalarProperty Name="kh_diachi" ColumnName="kh_diachi" />
+                <ScalarProperty Name="kh_sdt" ColumnName="kh_sdt" />
+                <ScalarProperty Name="kh_anh" ColumnName="kh_anh" />
+                <ScalarProperty Name="kh_loai" ColumnName="kh_loai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaisanphams">
+            <EntityTypeMapping TypeName="B1910293Model.loaisanpham">
+              <MappingFragment StoreEntitySet="loaisanpham">
+                <ScalarProperty Name="lsp_id" ColumnName="lsp_id" />
+                <ScalarProperty Name="lsp_tenloai" ColumnName="lsp_tenloai" />
+                <ScalarProperty Name="lsp_anhloai" ColumnName="lsp_anhloai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nhanviens">
+            <EntityTypeMapping TypeName="B1910293Model.nhanvien">
+              <MappingFragment StoreEntitySet="nhanvien">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="nv_username" ColumnName="nv_username" />
+                <ScalarProperty Name="nv_pwd" ColumnName="nv_pwd" />
+                <ScalarProperty Name="nv_hoten" ColumnName="nv_hoten" />
+                <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+                <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+                <ScalarProperty Name="nv_anh" ColumnName="nv_anh" />
+                <ScalarProperty Name="nv_chucvu" ColumnName="nv_chucvu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nhasanxuats">
+            <EntityTypeMapping TypeName="B1910293Model.nhasanxuat">
+              <MappingFragment StoreEntitySet="nhasanxuat">
+                <ScalarProperty Name="nsx_id" ColumnName="nsx_id" />
+                <ScalarProperty Name="nsx_tennsx" ColumnName="nsx_tennsx" />
+                <ScalarProperty Name="nsx_diachi" ColumnName="nsx_diachi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sanphams">
+            <EntityTypeMapping TypeName="B1910293Model.sanpham">
+              <MappingFragment StoreEntitySet="sanpham">
+                <ScalarProperty Name="sp_id" ColumnName="sp_id" />
+                <ScalarProperty Name="sp_loai" ColumnName="sp_loai" />
+                <ScalarProperty Name="sp_nsx" ColumnName="sp_nsx" />
+                <ScalarProperty Name="sp_ten" ColumnName="sp_ten" />
+                <ScalarProperty Name="sp_gia" ColumnName="sp_gia" />
+                <ScalarProperty Name="sp_soluong" ColumnName="sp_soluong" />
+                <ScalarProperty Name="sp_mota" ColumnName="sp_mota" />
+                <ScalarProperty Name="sp_anh" ColumnName="sp_anh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="B1910293Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chucvus">
+            <EntityTypeMapping TypeName="B1910293Model.chucvu">
+              <MappingFragment StoreEntitySet="chucvu">
+                <ScalarProperty Name="cv_ten" ColumnName="cv_ten" />
+                <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaikhachhangs">
+            <EntityTypeMapping TypeName="B1910293Model.loaikhachhang">
+              <MappingFragment StoreEntitySet="loaikhachhang">
+                <ScalarProperty Name="lkh_tenloai" ColumnName="lkh_tenloai" />
+                <ScalarProperty Name="lkh_id" ColumnName="lkh_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chitietdondats">
+            <EntityTypeMapping TypeName="B1910293Model.chitietdondat">
+              <MappingFragment StoreEntitySet="chitietdondat">
+                <ScalarProperty Name="ctdd_giatien" ColumnName="ctdd_giatien" />
+                <ScalarProperty Name="ctdd_soluong" ColumnName="ctdd_soluong" />
+                <ScalarProperty Name="ctdd_masp" ColumnName="ctdd_masp" />
+                <ScalarProperty Name="ctdd_madd" ColumnName="ctdd_madd" />
+                <ScalarProperty Name="ctdd_id" ColumnName="ctdd_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dondats">
+            <EntityTypeMapping TypeName="B1910293Model.dondat">
+              <MappingFragment StoreEntitySet="dondat">
+                <ScalarProperty Name="dd_tongtien" ColumnName="dd_tongtien" />
+                <ScalarProperty Name="dd_thoigian" ColumnName="dd_thoigian" />
+                <ScalarProperty Name="dd_matt" ColumnName="dd_matt" />
+                <ScalarProperty Name="dd_makh" ColumnName="dd_makh" />
+                <ScalarProperty Name="dd_id" ColumnName="dd_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trangthaidondats">
+            <EntityTypeMapping TypeName="B1910293Model.trangthaidondat">
+              <MappingFragment StoreEntitySet="trangthaidondat">
+                <ScalarProperty Name="ttdd_ten" ColumnName="ttdd_ten" />
+                <ScalarProperty Name="ttdd_id" ColumnName="ttdd_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

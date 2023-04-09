@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="427f978bb3524150a512cf8c7869e75f" Name="Diagram1" ZoomLevel="69">
+        <EntityTypeShape EntityType="B1910293Model.chitiethoadon" Width="1.5" PointX="2.875" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1910293Model.hoadon" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1910293Model.khachhang" Width="1.5" PointX="5.875" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1910293Model.loaisanpham" Width="1.5" PointX="4.625" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1910293Model.nhanvien" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1910293Model.nhasanxuat" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1910293Model.sanpham" Width="1.5" PointX="7.625" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="B1910293Model.sysdiagram" Width="1.5" PointX="18.25" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="B1910293Model.FK__chitietho__cthd___18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="B1910293Model.FK__chitietho__cthd___19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="B1910293Model.FK__hoadon__hd_makh__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="B1910293Model.FK__hoadon__hd_manv__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="B1910293Model.FK__sanpham__sp_loai__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="B1910293Model.FK__sanpham__sp_nsx__09A971A2" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="B1910293Model.chucvu" Width="1.5" PointX="0.75" PointY="16.375" />
+        <EntityTypeShape EntityType="B1910293Model.loaikhachhang" Width="1.5" PointX="6" PointY="9.875" />
+        <AssociationConnector Association="B1910293Model.FK__nhanvien__nv_chu__3493CFA7" />
+        <AssociationConnector Association="B1910293Model.FK__khachhang__kh_lo__3864608B" />
+        <EntityTypeShape EntityType="B1910293Model.chitietdondat" Width="1.5" PointX="11.75" PointY="7.875" />
+        <EntityTypeShape EntityType="B1910293Model.dondat" Width="1.5" PointX="8.125" PointY="13.875" />
+        <EntityTypeShape EntityType="B1910293Model.trangthaidondat" Width="1.5" PointX="3.75" PointY="16.625" />
+        <AssociationConnector Association="B1910293Model.FK__chitietdo__ctdd___46B27FE2" />
+        <AssociationConnector Association="B1910293Model.FK__chitietdo__ctdd___47A6A41B" />
+        <AssociationConnector Association="B1910293Model.FK__dondat__dd_makh__42E1EEFE" />
+        <AssociationConnector Association="B1910293Model.FK__dondat__dd_matt__43D61337" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

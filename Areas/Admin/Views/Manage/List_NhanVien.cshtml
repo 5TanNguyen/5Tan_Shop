@@ -1,0 +1,103 @@
+﻿@*@model IEnumerable<DoAn_555.nhanvien>*@
+
+@model PagedList.IPagedList<DoAn_555.nhanvien>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "List_NhanVien";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-center">Danh sách Nhân Viên</h2>
+
+<table class="table-active" @*style="background-color: aqua"*@>
+    <tr>
+        <th class="col-4">
+            <a href="~/Admin/Manage/Create_NhanVien" class="hover" style="text-decoration: none; font-weight: bold;">
+                Tạo mới Nhân Viên
+            </a>
+
+            @*</button>*@
+        </th>
+
+        <th class="col-1"></th>
+
+        <th class="col-4">
+            <div class="panel-body">
+                <br />
+                <!-- Thêm mã phân trang -->
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("List_NhanVien", new { page }))
+                <!-- Kết thúc -->
+            </div>
+        </th>
+    </tr>
+</table>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+    <th>
+        ID
+    </th>
+    <th>
+        Tên Nhân Viên
+    </th>
+    <th>
+        Password
+    </th>
+    <th>
+        Họ tên
+    </th>
+    <th>
+        Địa chỉ
+    </th>
+    <th>
+        SĐT
+    </th>
+    <th>
+        Ảnh
+    </th>
+    <th>
+        Chức vụ
+    </th>
+    <th></th>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nv_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nv_username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nv_pwd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nv_hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nv_diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nv_sdt)
+            </td>
+            <td>
+                <img src="~/Assets/Admin/assets/images/@item.nv_anh" style="width:200px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.chucvu.cv_ten)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit_NhanVien", new { id = item.nv_id }, new { @class = "btn btn-primary" }) ||
+                
+                @Html.ActionLink("Xóa", "Delete_NhanVien", new { id = item.nv_id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

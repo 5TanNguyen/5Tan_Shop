@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DoAn_555.sanpham>
+
+@{
+    ViewBag.Title = "List_SanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List_SanPham</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sp_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sp_loai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sp_nsx)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sp_ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sp_gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sp_soluong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sp_mota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sp_anh)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sp_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sp_loai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sp_nsx)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sp_ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sp_gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sp_soluong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sp_mota)
+        </td>
+        <td>
+            <img src="@Url.Content("~/Content/Image/" + item.sp_anh)" width="200" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit_SanPham", new {  id=item.sp_id  }) |
+            @Html.ActionLink("Details", "Details_SanPham", new { id = item.sp_id }) |
+            @Html.ActionLink("Delete", "Delete_SanPham", new { id = item.sp_id })
+        </td>
+    </tr>
+}
+
+</table>
